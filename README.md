@@ -39,3 +39,8 @@ https://docs.buf.build/tutorials/getting-started-with-buf-cli
 buf makes use of connect which you may also want to familiarize yourself with
 
 https://connect.build/
+
+buf example repo 
+
+https://github.com/bufbuild/buf-examples
+

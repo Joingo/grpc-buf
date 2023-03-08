@@ -5,9 +5,6 @@ package main
 
 import (
 	"fmt"
-	"os/exec"
-
-	"github.com/magefile/mage/mg" // mg contains helpful utility functions, like Deps
 	"github.com/magefile/mage/sh"
 )
 
@@ -17,18 +14,6 @@ import (
 
 const BUFF_VERSION = "v1.15.0"
 
-// A build step that requires additional params, or platform specific steps for example
-func Build() error {
-	mg.Deps(InstallDeps)
-	fmt.Println("Building...")
-	cmd := exec.Command("go", "build", "-o", "MyApp", ".")
-	return cmd.Run()
-}
-
-func InstallDeps() error {
-	return nil
-}
-
 func InstallBuf() error {
 	println("Installing Buf ...")
 	err := sh.RunV("go", "install", fmt.Sprintf("github.com/bufbuild/buf/cmd/buf@%s", BUFF_VERSION))
@@ -37,6 +22,19 @@ func InstallBuf() error {
 	}
 	return nil
 }
+
+/*
+
+go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
+go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2
+go install google.golang.org/protobuf/cmd/protoc-gen-go
+go install google.golang.org/grpc/cmd/protoc-gen-go-grp
+
+npm install protoc-gen-ts
+npm install grpc-web
+npm install google-protobuf
+
+*/
 
 func logAndReturn(err error) error {
 	println(err)

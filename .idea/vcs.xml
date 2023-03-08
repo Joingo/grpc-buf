@@ -2,6 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/buf-tour" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/https:/github.com/Joingo/grpc-buf" vcs="Git" />
   </component>
 </project>

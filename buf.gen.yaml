@@ -1,0 +1,35 @@
+version: v1
+managed:
+  enabled: true
+  optimize_for: CODE_SIZE
+
+#go/gateway
+  go_package_prefix:
+    default: github.com//Joingo/grpc-buf/go
+    except:
+      - buf.build/googleapis/googleapis
+plugins:
+  - plugin: buf.build/grpc-ecosystem/gateway
+    out: gen/go
+    opt:
+      - paths=source_relative
+  # dependencies
+  - plugin: buf.build/protocolbuffers/go
+    out: gen/go
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/grpc/go
+    out: gen/go
+    opt:
+      - paths=source_relative
+
+#kotlin
+  - plugin: buf.build/grpc/kotlin
+    out: gen/kotlin
+  # dependencies
+  - plugin: buf.build/protocolbuffers/kotlin
+    out: gen/kotlin
+
+#OpenAPI
+  - plugin: buf.build/grpc-ecosystem/openapiv2
+    out: gen/openaip
